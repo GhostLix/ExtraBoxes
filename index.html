@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Extra Box</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body>
+    <div class="page">
+      <header class="hero">
+        <div class="hero__container">
+          <div class="hero__content">
+            <h1 class="hero__title">Extra Box</h1>
+            <p class="hero__description">
+              Insert your Instagram username to get an extra box (you can do it infinite times).
+            </p>
+          </div>
+        </div>
+      </header>
+
+      <main class="main">
+        <section class="panel">
+          <div class="panel__header">
+            <h2 class="panel__title">Get Your Extra Box</h2>
+            <span class="panel__subtitle">Fill in your Instagram username</span>
+          </div>
+
+          <div class="search-panel">
+            <div class="search-controls">
+              <label for="username-input">
+                Instagram Username
+                <input
+                  type="text"
+                  id="username-input"
+                  name="username-input"
+                  placeholder="e.g. rebellious_r6"
+                  autocomplete="off"
+                  list="username-suggestions"
+                />
+                <datalist id="username-suggestions"></datalist>
+              </label>
+            </div>
+
+            <button id="submit-btn" class="details-button">Get your extra box</button>
+          </div>
+        </section>
+      </main>
+
+      <footer class="page__footer">
+        <p>Data is saved directly into Google Sheets.</p>
+      </footer>
+    </div>
+
+    <script src="assets/js/app.js" type="module"></script>
+  </body>
+</html>
