@@ -1,5 +1,5 @@
-
-const ENDPOINT = "https://script.google.com/macros/s/AKfycby1TDgfHLt-bUN3zIrV1Job5Wht_3BoRJM0fQGLnrRFMGD_925KFpGnxtkmNxiYRZEptQ/exec";
+// assets/js/app.js
+const ENDPOINT = "https://script.google.com/macros/s/AKfycby7WvTqcp7WTqIecW3oAnjrY79MlJP7sHncEV-TkVSMxLIUPeJjIDzQ9LYay1JSWJ0IrQ/exec";
 const DATA_FILES = ["data/data.json", "data/data2.json"];
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -76,5 +76,3 @@ document.addEventListener("DOMContentLoaded", () => {
 
   loadSuggestions();
 });
-
-
