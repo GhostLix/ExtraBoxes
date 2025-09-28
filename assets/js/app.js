@@ -78,4 +78,3 @@ document.addEventListener("DOMContentLoaded", () => {
   // ---- Avvia caricamento suggerimenti ----
   loadSuggestions();
 });
-
