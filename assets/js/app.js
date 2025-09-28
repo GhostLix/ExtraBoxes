@@ -1,3 +1,4 @@
+// assets/js/app.js
 const ENDPOINT = "https://script.google.com/macros/s/AKfycby1TDgfHLt-bUN3zIrV1Job5Wht_3BoRJM0fQGLnrRFMGD_925KFpGnxtkmNxiYRZEptQ/exec";
 const DATA_FILES = ["data/data.json", "data/data2.json"];
 
@@ -38,16 +39,30 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // ---- Salva username su Google Sheets ----
-  async function saveUsername(username) {
-    const res = await fetch(ENDPOINT, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ username }),
-    });
+  // ---- Salva username usando JSONP ----
+  function saveUsername(username) {
+    return new Promise((resolve, reject) => {
+      const callbackName = "cb_" + Date.now() + "_" + Math.floor(Math.random() * 10000);
 
-    if (!res.ok) throw new Error("Request failed: " + res.status);
-    return await res.text();
+      window[callbackName] = (data) => {
+        delete window[callbackName];
+        if (script.parentNode) script.parentNode.removeChild(script);
+
+        if (data.status === "OK") {
+          resolve(true);
+        } else {
+          reject(new Error(data.message || "Error saving username"));
+        }
+      };
+
+      const script = document.createElement("script");
+      script.src = `${ENDPOINT}?username=${encodeURIComponent(username)}&callback=${callbackName}`;
+      script.onerror = () => {
+        delete window[callbackName];
+        reject(new Error("JSONP request failed"));
+      };
+      document.body.appendChild(script);
+    });
   }
 
   // ---- Gestione click bottone ----
